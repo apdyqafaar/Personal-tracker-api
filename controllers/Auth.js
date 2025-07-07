@@ -53,7 +53,7 @@ export const login= async(req, res, next)=>{
 
 export const updateProfile=async(req, res, next)=>{
     let {name, email, password, role}=req.body
-   const id=req.params.id
+    const id=req.params.id
    console.log(id)
 
     
@@ -63,13 +63,15 @@ export const updateProfile=async(req, res, next)=>{
       password=await bcrypt.hash(password, 10)
     }
         if(role){
-         const user=await User.findById(id)
+         const
+          user=await User.findById(id)
              if(user?.role !=='admin'){
                return res.status(400).json('you dont have accees to change the role') 
              }
         }
             const updateUser=await User.findOneAndUpdate({_id:id}, {name, email, password}, {new:true})
             console.log(updateUser)
+            res.status(201).json('updated successfully')
     } catch (error) {
       next(error)
     }
