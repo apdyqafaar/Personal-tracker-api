@@ -1,9 +1,9 @@
 import express from "express";
 import { login, registerNewUser, updateProfile } from "../controllers/Auth.js";
 import { validator } from "../middlewares/SchemaVlidator.js";
-import { userSchemaZod } from "../schema/userRegisterSchemaZod.js";
 import { loginSchemaZod } from "../schema/userLoginSchemaZod.js";
 import { protecte } from "../middlewares/protected.js";
+import { userSchemaZod } from "../schema/userSchemaZod.js";
 
 const router=express.Router()
 

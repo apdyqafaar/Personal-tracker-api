@@ -14,7 +14,9 @@ const userSchema=mongoose.Schema({
         default:"user"
     },
     profileUrl:{type:String, default:""}
-})
+},
+{timestamps:true}
+)
 
 
 

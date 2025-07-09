@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import { notFound } from './middlewares/notFoundError.js';
 import { globalErr } from './middlewares/golobalErrorHndler.js';
 import AuthRouter from './routes/Auth.js';
+import uploadProfileRouter from './routes/uploudProfileImage.js';
+import transRouter from './routes/transictions.js';
+import adminRouter from './routes/admin.js';
 
 const app=express()
 dotenv.config()
@@ -12,6 +15,9 @@ const port =process.env.PORT || 3001
 app.use(express.json())
 
 app.use('/auth', AuthRouter)
+app.use('/upload-profile', uploadProfileRouter)
+app.use('/trans', transRouter)
+app.use('/admin', adminRouter)
 
 app.get('/', (req, res)=>{
     res.status(201).json('wellcom to personal tracker app')
@@ -23,7 +29,7 @@ app.use(globalErr)
 
 
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URL)
 .then(()=> console.log('mongodb was connected succesfuly'))
 .catch((e)=> console.log(e))
 
