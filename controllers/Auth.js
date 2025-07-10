@@ -69,7 +69,7 @@ export const updateProfile=async(req, res, next)=>{
                return res.status(400).json('you dont have accees to change the role') 
              }
         }
-            const updateUser=await User.findOneAndUpdate({_id:id}, {name, email, password}, {new:true})
+            const updateUser=await User.findOneAndUpdate({_id:req.user._id}, {name, email, password}, {new:true})
             console.log(updateUser)
             res.status(201).json('updated successfully')
     } catch (error) {

@@ -9,7 +9,7 @@ const router=express.Router()
 
 router.post('/register', validator(userSchemaZod), registerNewUser)
 router.post('/login', validator(loginSchemaZod), login)
-router.put('/update/:id',protecte, updateProfile)
+router.put('/update',protecte, updateProfile)
 
 
 export default router
