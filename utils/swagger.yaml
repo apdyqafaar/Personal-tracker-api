@@ -6,8 +6,10 @@ info:
   description: Backend API for Personal Finance Tracker
 
 servers:
-  - url: http://localhost:3000
-    description: Local dev server
+  - url: http://localhost:5000
+    description: Local Development
+  - url: https://personal-tracker-api-z0z2.onrender.com
+    description: Production (Render)
 
 security:
   - bearerAuth: []
