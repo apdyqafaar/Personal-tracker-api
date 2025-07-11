@@ -41,10 +41,26 @@ app.use(notFound);
 app.use(globalErr)
 
 
+console.log(process.env.MONGO_URL_PRO)
+const mongoURI = process.env.NODE_ENV === 'development'
+  ?process.env.MONGO_URL_PRO
+  :process.env.MONGO_URL_DEV
 
 
-mongoose.connect(process.env.NODE_ENV =='development'?process.env.MONGO_URL_DEV :process.env.MONGO_URL_PRO)
-.then(()=> console.log('mongodb was connected succesfuly'))
-.catch((e)=> console.log(e))
+if (!mongoURI) {
+  console.error('❌ MongoDB URI is missing. Please check environment variables.');
+  process.exit(1);
+}
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  bufferCommands: false, 
+})
+.then(() => console.log('✅ MongoDB connected successfully'))
+.catch((err) => {
+  console.error('❌ MongoDB connection error:', err.message);
+  process.exit(1); 
+});
 
 app.listen(port,()=>console.log(`app is listening port of ${port}`))
