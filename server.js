@@ -43,7 +43,7 @@ app.use(globalErr)
 
 
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(process.env.NODE_ENV =='development'?process.env.MONGO_URL_DEV :process.env.MONGO_URL_PRO)
 .then(()=> console.log('mongodb was connected succesfuly'))
 .catch((e)=> console.log(e))
 
