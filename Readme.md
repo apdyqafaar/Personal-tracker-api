@@ -40,6 +40,6 @@ A secure and RESTful backend API built using **Node.js**, **Express**, **MongoDB
 ### 1. Clone Repo & Install Packages
 
 ```bash
-git clone https://github.com/yourusername/Personal-tracker-api.git
+git clone https://github.com/apdyqafaar/Personal-tracker-api
 cd Personal-tracker-api
 npm install
