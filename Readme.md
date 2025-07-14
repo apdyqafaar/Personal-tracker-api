@@ -43,3 +43,5 @@ A secure and RESTful backend API built using **Node.js**, **Express**, **MongoDB
 git clone https://github.com/apdyqafaar/Personal-tracker-api
 cd Personal-tracker-api
 npm install
+
+to see the swagger = https://personal-tracker-api-z0z2.onrender.com/docs/
