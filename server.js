@@ -43,8 +43,9 @@ app.use(globalErr)
 
 console.log(process.env.MONGO_URL_PRO)
 const mongoURI = process.env.NODE_ENV === 'development'
-  ?process.env.MONGO_URL_PRO
-  :process.env.MONGO_URL_DEV
+  ?process.env.MONGO_URL_DEV
+  :process.env.MONGO_URL_PRO
+ 
 
 
 if (!mongoURI) {
@@ -52,7 +53,7 @@ if (!mongoURI) {
   process.exit(1);
 }
 
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGO_URL_PRO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   bufferCommands: false, 
