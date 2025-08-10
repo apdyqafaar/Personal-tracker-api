@@ -5,7 +5,7 @@ dotenv.config()
 export const protecte=async(req, res, next)=>{
   
     const token=req.headers.authorization?.split(' ')[1]
-    //   console.log(token)
+      console.log(token)
     if(!token){
         return res.status(400).json({
             success:false,
@@ -19,6 +19,7 @@ export const protecte=async(req, res, next)=>{
         req.user=await User.findById(decode.user_id)
         next()
     } catch (error) {
-        next(error)
+        // console.log(error)
+        return res.status(401).json({ message: "Invalid or expired token" });
     }
 }

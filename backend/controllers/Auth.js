@@ -17,10 +17,12 @@ export const registerNewUser=async(req, res, next)=>{
         }
 
         const newUser=await User.create({name, email, password, role, profileUrl})
-        const token= generateToken(newUser._id)
+        
+         const cleanUser = await User.findById(newUser._id).select('-password -createdAt -updatedAt -__v');
+        const token= generateToken(cleanUser._id)
 
 
-        res.status(201).json({token})
+        res.status(201).json({cleanUser,token})
 
 
      } catch (error) {
@@ -33,9 +35,9 @@ export const registerNewUser=async(req, res, next)=>{
 // login
 export const login= async(req, res, next)=>{
    let {email, password}=req.body
+ 
   try {
     const logedUser=await User.findOne({email})
-     
     if(!logedUser || !(await logedUser.comparePassword(password))){
       return res.status(400).json({
             success:false,
@@ -43,9 +45,10 @@ export const login= async(req, res, next)=>{
             message:`invalid credential !`
       })
     }
-
+  
     const token=generateToken(logedUser._id)
-     res.status(201).json({token})
+  
+     res.status(201).json({token, logedUser})
   } catch (error) {
    next(error)
   }

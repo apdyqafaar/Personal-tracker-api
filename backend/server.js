@@ -11,6 +11,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import setupSwagger from './utils/swagger.js'
 import { rateLimitFun } from './middlewares/rateLimit.js';
+import cors from 'cors'
+import { protecte } from './middlewares/protected.js';
 
 const app=express()
 dotenv.config()
@@ -21,27 +23,29 @@ setupSwagger(app);
 if(process.env.NODE_ENV='development'){
     app.use(morgan('combined'))
 }
-
+app.use(cors({
+  origin:['http://localhost:5173']
+}))
 app.use(helmet())
 app.use(rateLimitFun)
 app.use(express.json())
 
 
 
-app.use('/auth', AuthRouter)
-app.use('/upload-profile', uploadProfileRouter)
-app.use('/trans', transRouter)
-app.use('/admin', adminRouter)
+app.use('/api/auth', AuthRouter)
+app.use('/api/upload-profile', uploadProfileRouter)
+app.use('/api/trans', transRouter)
+app.use('/api/admin', adminRouter)
 
-app.get('/', (req, res)=>{
-    res.status(201).json('wellcom to personal tracker app')
+app.get('/api/',protecte, (req, res)=>{
+    res.status(201).json(req.user)
 })
 
 app.use(notFound);
 app.use(globalErr)
 
 
-console.log(process.env.MONGO_URL_PRO)
+// console.log(process.env.MONGO_URL_PRO)
 const mongoURI = process.env.NODE_ENV === 'development'
   ?process.env.MONGO_URL_DEV
   :process.env.MONGO_URL_PRO
@@ -53,7 +57,7 @@ if (!mongoURI) {
   process.exit(1);
 }
 
-mongoose.connect(process.env.MONGO_URL_PRO, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   bufferCommands: false, 
