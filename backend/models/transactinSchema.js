@@ -3,6 +3,7 @@ import  Mongoose  from "mongoose";
 
 const transactionSchemas= mongoose.Schema({
     title:String,
+    description:String,
     amount:String,
     type:String,
     category:String,

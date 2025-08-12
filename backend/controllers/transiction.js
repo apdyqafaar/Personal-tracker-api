@@ -24,13 +24,14 @@ export const getAllTrans=async(req, res, next)=>{
 export const registerTransiction=async(req, res, next)=>{
 
      if(!req.body) return next('no trans was provided')
-        const {title, amount, type, category, date,  }=req.body
+        const {title, amount, type, category, date,  description}=req.body
     try {
-        const trans=await Transiction.create({Author:req.user?._id?.toString(), title, amount, type, category, date})
+        const trans=await Transiction.create({Author:req.user?._id?.toString(), title, amount, type, category, date, description})
 
         res.status(201).json(trans)
 
     } catch (error) {
+        console.log(error)
         next()
     }
 }

@@ -1,47 +1,96 @@
-# 💰 Personal Finance Tracker API
+💰 Personal Finance Tracker
+A full-stack personal finance tracking app built with React, Zustand, React Query, Tailwind CSS, and Express.
+It allows users to track income & expenses, categorize transactions, and manage them with ease.
 
-A secure and RESTful backend API built using **Node.js**, **Express**, **MongoDB**, and **Zod**, allowing users to track income, expenses, upload profile pictures, and view summaries. Includes full JWT authentication, admin access, and Swagger documentation.
+🚀 Features
+🔐 Authentication
+Sign up / Login with JWT-based authentication
 
----
+Role-based access control (admin and user)
 
-## 🔧 Features
+📊 Transaction Management
+Create, edit, and delete transactions
 
-- ✅ User Registration & Login with JWT
-- ✅ Role-based access (`user`, `admin`)
-- ✅ Transactions: add, update, delete, and list
-- ✅ Monthly summaries & category filtering
-- ✅ Profile image upload via Cloudinary
-- ✅ Admin dashboard to monitor all activity
-- ✅ Input validation with Zod
-- ✅ Swagger API documentation
-- ✅ CORS, Helmet, Rate Limiting, Global Error Handling
-- ✅ Deployed on Render with public API URL
+Transaction details:
 
----
+Title
 
-## 🧩 Tech Stack & Dependencies
+Description
 
-- **Express** – Web server
-- **MongoDB + Mongoose** – Database
-- **bcrypt** – Password hashing
-- **jsonwebtoken** – JWT Auth
-- **dotenv** – Environment config
-- **Zod** – Input validation
-- **Multer** – File upload middleware
-- **Cloudinary** – Image storage
-- **Swagger UI Express + yamljs** – API documentation
-- **Helmet, morgan, express-rate-limit** – Security
-- **CORS** – Cross-origin handling
+Amount
 
----
+Type (Income / Expense)
 
-## ⚙️ Project Setup
+Category (customizable)
 
-### 1. Clone Repo & Install Packages
+Date selection with calendar picker
 
-```bash
-git clone https://github.com/apdyqafaar/Personal-tracker-api
-cd Personal-tracker-api
+Form validation using React Hook Form
+
+🎯 Filtering & Sorting
+View latest, oldest, or all transactions
+
+Filter transactions by type or category
+
+🌙 Theme Support
+Light, Dark, and System theme options
+
+Custom text selection highlight color
+
+💾 State & Data Management
+React Query for fetching & mutating transactions
+
+Automatic data refresh (invalidateQueries) after updates or deletes
+
+Zustand store for managing selected transaction state
+
+📱 Responsive UI
+Shadcn UI components for a modern look
+
+Fully responsive for desktop, tablet, and mobile
+
+🛠 Tech Stack
+Frontend:
+
+React.js
+
+Tailwind CSS
+
+Zustand
+
+React Query
+
+React Hook Form
+
+Shadcn UI
+
+Backend:
+
+Node.js & Express
+
+MongoDB (Mongoose)
+
+JWT Authentication
+
+📦 Installation
+bash
+Copy
+Edit
+# Clone repository
+git clone https://github.com/your-username/finance-tracker.git
+
+# Install dependencies
+cd finance-tracker
 npm install
 
-to see the swagger = https://personal-tracker-api-z0z2.onrender.com/docs/
+# Start development server
+npm run dev
+⚙️ Environment Variables
+Create a .env file in the root of your backend folder and add:
+
+env
+Copy
+Edit
+MONGO_URI=your_mongodb_connection
+JWT_SECRET=your_secret_key
+PORT=5000

@@ -6,7 +6,7 @@ import { RightSideMenu } from "./RightSideMenu";
 export const Header = () => {
   const { user, isAuthenticated } = useAthStore();
   return (
-    <div className="py-3 shadow-sm px-2 sm:px-4 bg-background">
+    <div className="py-3 shadow-sm px-2 sm:px-4 sticky top-0 left-0 right-0 z-50 backdrop-blur-sm">
       <div className="w-full sm:max-w-7xl mx-auto ">
         <div className="flex items-center justify-between gap-3">
           {/* Logo */}
@@ -24,7 +24,7 @@ export const Header = () => {
             </Link>
           </div>
 
-          {/* navigation menues */}
+          {/* navigation menues
           {isAuthenticated && (
             <div className=" hidden md:block ">
               <div className="flex items-center gap-6">
@@ -79,7 +79,7 @@ export const Header = () => {
                 </NavLink>
               </div>
             </div>
-          )}
+          )} */}
 
           {/* right side navigations and user profile */}
           <RightSideMenu/>
