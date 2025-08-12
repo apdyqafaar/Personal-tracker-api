@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/sheet";
 
 import { Badge } from "@/components/ui/badge";
-import { useTheme } from "../Theme-provider";
+import { useTheme } from "../ThemeProvider";
 
 export const RightSideMenu = () => {
   const { user, isAuthenticated, clearAuth } = useAthStore();
