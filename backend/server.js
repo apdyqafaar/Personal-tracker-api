@@ -13,6 +13,8 @@ import setupSwagger from './utils/swagger.js'
 import { rateLimitFun } from './middlewares/rateLimit.js';
 import cors from 'cors'
 import { protecte } from './middlewares/protected.js';
+import {path}from"path"
+import {fileURLToPath}from"url"
 
 const app=express()
 dotenv.config()
@@ -43,6 +45,15 @@ app.get('/api/',protecte, (req, res)=>{
 
 app.use(notFound);
 app.use(globalErr)
+
+if(process.env.NODE_ENV === 'development'){
+   const __dirname=path.dirname(fileURLToPath(import.meta.url))
+   app.use(express.static(path.json(__dirname, "../frontend/dist")))
+
+   app.get(/.*/, (req, res)=>{
+    res.send(path.json(__dirname, "..", "frontend", "dist", "index.html"))
+   })
+}
 
 
 // console.log(process.env.MONGO_URL_PRO)
