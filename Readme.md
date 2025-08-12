@@ -77,7 +77,7 @@ bash
 Copy
 Edit
 # Clone repository
-git clone https://github.com/your-username/finance-tracker.git
+git clone https://github.com/apdyqafaar/finance-tracker.git
 
 # Install dependencies
 cd finance-tracker
