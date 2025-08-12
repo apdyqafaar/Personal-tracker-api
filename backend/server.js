@@ -46,7 +46,7 @@ app.get('/api/',protecte, (req, res)=>{
 app.use(notFound);
 app.use(globalErr)
 
-if(process.env.NODE_ENV === 'development'){
+if(process.env.NODE_ENV === 'pro'){
    const __dirname=path.dirname(fileURLToPath(import.meta.url))
    app.use(express.static(path.json(__dirname, "../frontend/dist")))
 
