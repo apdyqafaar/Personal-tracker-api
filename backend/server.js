@@ -60,8 +60,8 @@ if(process.env.NODE_ENV === 'pro'){
 const mongoURI = process.env.NODE_ENV === 'development'
   ?process.env.MONGO_URL_DEV
   :process.env.MONGO_URL_PRO
- 
-
+  
+console.log(mongoURI)
 
 if (!mongoURI) {
   console.error('❌ MongoDB URI is missing. Please check environment variables.');
