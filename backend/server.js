@@ -13,7 +13,7 @@ import setupSwagger from './utils/swagger.js'
 import { rateLimitFun } from './middlewares/rateLimit.js';
 import cors from 'cors'
 import { protecte } from './middlewares/protected.js';
-import {path}from"path"
+import path from"path"
 import {fileURLToPath}from"url"
 
 const app=express()
