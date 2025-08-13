@@ -13,8 +13,8 @@ import setupSwagger from './utils/swagger.js';
 import { rateLimitFun } from './middlewares/rateLimit.js';
 import cors from 'cors';
 import { protecte } from './middlewares/protected.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path"
+import { fileURLToPath } from "url";
 
 dotenv.config();
 const app = express();
@@ -46,10 +46,6 @@ app.get('/api/', protecte, (req, res) => {
   res.status(201).json(req.user);
 });
 
-// Error handlers
-app.use(notFound);
-app.use(globalErr);
-
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -59,6 +55,12 @@ if (process.env.NODE_ENV === 'production') {
     res.send(path.join(__dirname, "..", "frontend", "dist", "index.html"))
   })
 }
+
+
+// Error handlers
+app.use(notFound);
+app.use(globalErr);
+
 
 // MongoDB connection
 const mongoURI = process.env.NODE_ENV === 'development'
