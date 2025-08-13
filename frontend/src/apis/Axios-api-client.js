@@ -1,7 +1,7 @@
 import axios  from "axios"
 import useAthStore from "../store/UserAuthStore"
 
-const url='https://personal-tracker-api-z0z2.onrender.com'
+const url='https://personal-tracker-api-z0z2.onrender.com/api'
 const Api_url=axios.create({
     baseURL:url,
     headers:{
