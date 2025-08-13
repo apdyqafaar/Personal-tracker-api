@@ -3,9 +3,10 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "./components/Theme-provider.jsx";
+// import { ThemeProvider } from "./components/Theme-provider.jsx";
 import { BrowserRouter } from "react-router";
 import { Toaster } from "@/components/ui/sonner"
+import { ThemeProvider } from "./components/ThemePro.jsx";
 
 
 const queryclient = new QueryClient({
