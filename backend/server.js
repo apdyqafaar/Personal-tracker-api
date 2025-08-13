@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Middlewares
 app.use(cors({
-  origin: ['https://personal-tracker-api-z0z2.onrender.com']
+  origin: ['https://personal-tracker-api-z0z2.onrender.com',"http://localhost:5173"]
 }));
 app.use(helmet());
 app.use(rateLimitFun);
